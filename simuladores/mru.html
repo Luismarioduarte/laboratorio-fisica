@@ -1,40 +1,81 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MRU - Simulador</title>
-    <link rel="stylesheet" href="../style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Simulador MRU</title>
+
+<link rel="stylesheet" href="../style.css">
+
+<style>
+
+.simulador{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+canvas{
+background:white;
+border:2px solid #333;
+margin-top:20px;
+}
+
+.controles{
+margin-top:20px;
+}
+
+label{
+display:block;
+margin-top:10px;
+}
+
+input{
+width:200px;
+}
+
+</style>
+
 </head>
+
 <body>
-    <div class="simulador-container">
-        <h1>Movimiento Rectilíneo Uniforme (MRU)</h1>
-        <p class="subtitulo">x = x₀ + v · t</p>
 
-        <canvas id="canvasMRU" width="800" height="300"></canvas>
+<header>
+<h1>Simulador MRU</h1>
+<p>Movimiento Rectilíneo Uniforme</p>
+</header>
 
-        <div class="controles">
-            <div class="control-item">
-                <label for="velocidad">Velocidad (m/s): <span id="velValor">2.0</span></label>
-                <input type="range" id="velocidad" min="-5" max="5" step="0.1" value="2.0">
-            </div>
-            <div class="control-item">
-                <label for="posInicial">Posición inicial (m): <span id="posInicialValor">5.0</span></label>
-                <input type="range" id="posInicial" min="0" max="70" step="0.5" value="5.0">
-            </div>
-        </div>
+<div class="simulador">
 
-        <div class="botones">
-            <button id="iniciarBtn">▶ Iniciar</button>
-            <button id="reiniciarBtn" class="reset">↺ Reiniciar</button>
-        </div>
+<canvas id="canvas" width="800" height="200"></canvas>
 
-        <div class="datos">
-            <p>Tiempo: <span id="tiempoDisplay">0.00</span> s</p>
-            <p>Posición: <span id="posicionDisplay">5.0</span> m</p>
-        </div>
-    </div>
+<div class="controles">
 
-    <script src="js/mru.js"></script>
+<label>
+Velocidad (px/s)
+<br>
+<input type="range" id="velocidad" min="10" max="200" value="60">
+</label>
+
+<label>
+Posición inicial
+<br>
+<input type="range" id="posicion" min="0" max="400" value="20">
+</label>
+
+<br>
+
+<button onclick="iniciar()">Iniciar</button>
+<button onclick="pausar()">Pausar</button>
+<button onclick="reiniciar()">Reiniciar</button>
+
+</div>
+
+</div>
+
+<script src="../js/mru.js"></script>
+
 </body>
 </html>
