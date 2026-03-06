@@ -1,3 +1,12 @@
+const graficaPosicion = document.getElementById("graficaPosicion");
+const ctxPos = graficaPosicion.getContext("2d");
+
+const graficaVelocidad = document.getElementById("graficaVelocidad");
+const ctxVel = graficaVelocidad.getContext("2d");
+
+let datosTiempo = [];
+let datosPosicion = [];
+let datosVelocidad = [];
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
@@ -53,7 +62,9 @@ let dt = 0.016;
 tiempo += dt;
 
 posicion += velocidad * dt;
-
+datosTiempo.push(tiempo);
+datosPosicion.push(posicion);
+datosVelocidad.push(velocidad);
 dibujar();
 
 }
