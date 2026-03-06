@@ -40,7 +40,9 @@ ejecutando = false;
 
 posicion = Number(document.getElementById("posicion").value);
 tiempo = 0;
-
+datosTiempo = [];
+datosPosicion = [];
+datosVelocidad = [];
 dibujar();
 
 }
@@ -91,3 +93,48 @@ ctx.fillText("Velocidad: "+velocidad+" px/s",20,50);
 }
 
 dibujar();
+function dibujarGraficas(){
+
+ctxPos.clearRect(0,0,graficaPosicion.width,graficaPosicion.height);
+
+ctxPos.beginPath();
+
+for(let i=0;i<datosTiempo.length;i++){
+
+let x = datosTiempo[i]*50;
+let y = graficaPosicion.height - datosPosicion[i]*0.3;
+
+if(i===0){
+ctxPos.moveTo(x,y);
+}else{
+ctxPos.lineTo(x,y);
+}
+
+}
+
+ctxPos.strokeStyle="blue";
+ctxPos.stroke();
+
+
+
+ctxVel.clearRect(0,0,graficaVelocidad.width,graficaVelocidad.height);
+
+ctxVel.beginPath();
+
+for(let i=0;i<datosTiempo.length;i++){
+
+let x = datosTiempo[i]*50;
+let y = graficaVelocidad.height - datosVelocidad[i];
+
+if(i===0){
+ctxVel.moveTo(x,y);
+}else{
+ctxVel.lineTo(x,y);
+}
+
+}
+
+ctxVel.strokeStyle="red";
+ctxVel.stroke();
+
+}
